@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { AppBar, Button, Toolbar, Typography, Avatar,  } from '@material-ui/core';
 //import useStyles from './styles';
 import decode from 'jwt-decode';
 import { Link } from 'react-router-dom';

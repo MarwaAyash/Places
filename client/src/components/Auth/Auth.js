@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import { Avatar, Button, Paper, Grid, Typography, Container } from '@material-ui/core';
 import { GoogleLogin} from "react-google-login";
 import './Auth.css'
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
