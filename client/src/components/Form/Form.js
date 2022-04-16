@@ -1,9 +1,8 @@
-import React, { useEffect, useState} from 'react'
-import useStyles from './styles';
-import { TextField, Button, Typography, Paper } from '@material-ui/core';
+import React, { useEffect, useState} from 'react';
 import FileBase from 'react-file-base64';
 import { useDispatch, useSelector } from 'react-redux';
 import { createPost, updatePost } from '../../actions/posts';
+import './Form.css';
 
 // we need the id of the current post to update it
 const Form = ({currentId, setCurrentId}) => {
@@ -11,48 +10,66 @@ const Form = ({currentId, setCurrentId}) => {
     const post = useSelector((state) => currentId ? state.posts.find((postId) =>  postId._id === currentId) : null);
     // state that will stored the data in 
     const [postData, setPostData] = useState({
-        creator: '',
         title: '',
         message:'',
         tags:'',
         selectedFile:''
     });
-    const classes = useStyles();
+    //const classes = useStyles();
 const dispatch = useDispatch();
+const user = JSON.parse(localStorage.getItem('profile'));
 
 useEffect(() => {
     if(post) setPostData(post);
 }, [post])
-    const handleSubmit = (e) => {
+
+    const handleSubmit = async (e) => {
         // when we click submit we want to send over a post request all the data that entered by the user
         e.preventDefault();
-        if(currentId){
-            dispatch(updatePost(currentId, postData));
+        if(currentId === 0){
+            dispatch(createPost({...postData, name: user?.result?.name}));
+            clear();
+
         }
         else{
-            dispatch(createPost(postData))
+            dispatch(updatePost(currentId, {...postData, name: user?.result?.name}));
+            clear();
         }
-        clear();
-    }
+        
+    };
     const clear = () => {
-        setCurrentId(null);
-        setPostData({ creator: '', title: '', message:'', tags:'', selectedFile:'' });
+        setCurrentId(0);
+        setPostData({ title: '', message:'', tags:'', selectedFile:'' });
     }
+
+if(!user?.result?.name){
+    return(
+        <div className="paper">
+            <h3 align="center">Sign in to be able to create a post</h3>
+        </div>
+    )
+}
+
+
     return (
-        // paper is the the same as div 
-        <Paper className={classes.paper}>
-            <form autoComplete='off' noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
-                <Typography variant="h6">{currentId ? 'updating': ''} Places </Typography>
+    
+        <div className="paper1" >
+            <form autoComplete='off' noValidate className="root form" onSubmit={handleSubmit}>
+                <h2>{currentId ? 'updating': ''} Places </h2>
                     {/* value will be stored in state */}
-                <TextField name="creator" variant="outlined" label="Creator" fullWidth value={postData.creator} onChange={(e) => setPostData({ ...postData, creator: e.target.value})} />
-                <TextField name="title" variant="outlined" label="Title" fullWidth value={postData.title} onChange={(e) => setPostData({ ...postData, title: e.target.value})} />
-                <TextField name="message" variant="outlined" label="Info" fullWidth value={postData.message} onChange={(e) => setPostData({ ...postData, message: e.target.value})} />
-                <TextField name="tags" variant="outlined" label="tags" fullWidth value={postData.tags} onChange={(e) => setPostData({ ...postData, tags: e.target.value.split(',')})} />
-                <div className={classes.fileInput} ><FileBase type="file" multiple={false} onDone={({base64}) => setPostData({ ...postData, selectedFile: base64})}/></div>
-                <Button className={classes.buttonSubmit} color='primary' variant="contained"  size="small" type="submit" fullWidth>Submit</Button>
-                <Button variant="contained" color="secondary" size="small" onClick={clear} fullWidth>Clear</Button>
+            <div className='div'>
+            <label >Title: <input className='title'  name="title" variant="outlined" label="Title" size='25'  value={postData.title} onChange={(e) => setPostData({ ...postData, title: e.target.value})} /> </label>
+            
+            <label>Info: <input className='info' name="message"  label="Info" size='25' value={postData.message} onChange={(e) => setPostData({ ...postData, message: e.target.value})} /></label>
+            
+            <label  >Tags: <input className='tags' name="tags"  label="tags" size='25' value={postData.tags} onChange={(e) => setPostData({ ...postData, tags: e.target.value.split(',')})} /></label>
+            </div>
+            
+                <div className="fileInput" ><FileBase type="file" multiple={false} onDone={({base64}) => setPostData({ ...postData, selectedFile: base64})}/></div>
+                <button className="buttonSubmit"  variant="contained"  size="small" type="submit" >Submit</button>
+                <button className="buttonClear" variant="contained" size="small" type='reset' onClick={clear} >Clear</button>
             </form>
-        </Paper>
+        </div>
     )
 }
 

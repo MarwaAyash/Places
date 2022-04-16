@@ -1,0 +1,83 @@
+.root {
+    margin-bottom: 7px;
+    background:white ;
+    justify-content: space-evenly ;
+    margin: 10px 0 ;
+    
+}
+.paper {
+    padding: 10px;
+    background: white ;
+    border: 1px dotted;
+    
+}
+.paper1 {
+    padding: 10px;
+    background: white ;
+    border: 1px solid;
+    width: 300px;
+    
+}
+.form {
+    display: flex ;
+    flex-wrap: wrap ;
+    justify-content: center ;
+    align-items: center;
+    
+}
+
+.fileInput {
+    width: 80% ;
+    margin: 10px 20px ;
+    
+}
+.buttonSubmit {
+    margin-bottom: 14px ;
+    color: white ;
+    background: blue ;
+    width: 30%;
+    height: 30px;
+    margin-left: 10px;
+}
+
+.buttonClear {
+    margin-bottom: 14px ;
+    color: white ;
+    background: red ;
+    width: 30%;
+    margin-left: 10px;
+    height: 30px;
+}
+.div {
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    text-align: right;
+    align-items:stretch;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    margin-right: 10px;
+    padding: 5px;
+    
+}
+.title{
+    margin-bottom: 5px;
+    margin-top: 5px;
+    width: 68%;
+    height: 30px;
+    
+}
+.info{
+    margin-bottom: 5px;
+    margin-top: 5px;
+    width: 78%;
+    height: 30px;
+    
+}
+.tags{
+    margin-bottom: 5px;
+    margin-top: 5px;
+    width: 78%;
+    height: 30px;
+    
+}

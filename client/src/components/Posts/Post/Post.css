@@ -1,0 +1,90 @@
+.media {
+    height: 200px ;
+    background-color: rgba(0, 0, 0, 0.2);
+    background-blend-mode: darken;
+    border-radius: 10px;
+}
+.border {
+    border: 1px solid;
+}
+
+.card {
+    display: flex ;
+    flex-direction: column ;
+    justify-content: space-between ;
+    border-radius: 15px ;
+    height: 100% ;
+    width:100%;
+    position: relative ;
+    border: 1px solid;
+    
+}
+.overlay {
+    position: absolute ;
+    top: 1px ;
+    left: 20px ;
+    color: white ;
+}
+.overlay2 {
+    position: absolute ;
+    top: 1px ;
+    right: 1px ;
+    color: white ;
+}
+.grid {
+    display: flex;
+}
+.details {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+    height: 20%;
+    
+}
+.title {
+    padding: 10px;
+    text-align:center;
+    
+}
+.cardActions {
+    padding: 0 16px 8px 16px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttonEdit {
+    background: none;
+    border: none;
+
+}
+
+.tag {
+    color: gray;
+    text-align: left;
+}
+.message {
+    color: rgba(51, 49, 49, 0.76);
+    padding: 10px;
+    text-align: left;
+
+
+    
+}
+.message-div{
+    display: flex;
+    justify-content: flex-start;
+    width:100%;
+    height: 30%;
+    padding: 10px;
+}
+.btnLike {
+    border: none;
+    background: none;
+    
+}
+
+.btnDelete {
+    border: none;
+    background: none;
+    color: red;
+}

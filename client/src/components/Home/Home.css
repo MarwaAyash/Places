@@ -1,0 +1,38 @@
+.container{
+    display: grid;
+    
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 20px;
+    margin-right: 20px;
+}
+
+.div{
+    grid-area: main;
+    padding: 16px 20px;
+    
+}
+.form1{
+    width: 100% ; 
+    margin-top: 3px ;
+    display: flex ;
+    flex-direction: column ;
+    justify-content: flex-start;
+    align-items: flex-start ;
+}
+
+.main{
+    display: inline-block;
+}
+
+.parent{
+    margin:10px;
+    padding:5px ;
+    text-align: center;
+}
+
+.child{
+    display: inline-block;
+    border: 1px solid black;
+    padding: 5px;
+    vertical-align: middle;
+}
