@@ -1,11 +1,10 @@
 
 .div-container {
     /* margin-bottom: 10px; */
-    
     margin: 13px;
     display: grid;
     width: 330px;
-    height: 530px;
+    height: 600px;
     grid-template-columns: repeat(2, 1fr);
 
     grid-gap: 20px;
@@ -18,9 +17,7 @@
     flex-wrap:  wrap ;
     justify-content:stretch ;
     align-items: stretch;
-    /* margin-top: -20px; */
-    /* margin-left: 250px; */
     width: 190%;
-    /* background: darkblue; */
     margin-left: -20px;
+    
 }

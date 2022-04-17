@@ -2,10 +2,11 @@ import React, {useEffect, useState} from 'react';
 import Posts from '../Posts/Posts';
 import Form from '../Form/Form';
 import { useDispatch } from 'react-redux';
-import { getPosts } from '../../actions/posts';
+import { getPosts, getPostsBySearch } from '../../actions/posts';
 import styled from 'styled-components';
 import Pagination from '../Pagination';
 import { useNavigate, useLocation } from 'react-router-dom';
+import ChipInput from 'material-ui-chip-input'
 import './Home.css'
 
 function useQuery() {
@@ -33,10 +34,24 @@ const Home = () => {
         // enter key has a code 13
         if(e.keyCode === 13){
             //search post
+            searchPost();
         }
     };
 
     const handleAdd = (tag) => setTags([...tags, tag]);
+
+
+    const searchPost = () => {
+        if(search.trim() || tags){
+            //fetch search post
+            dispatch(getPostsBySearch({search, tags: tags.join(',')}));
+            navigate(`/posts/search?searchQuery=${search || 'none'}&tags=${tags.join(',')}`);
+        }
+        else{
+            navigate('/');
+        }
+    }
+
 
     const handleDelete = (tagToDelete) => setTags(tags.filter((tag) => tag !== tagToDelete));
 
@@ -47,7 +62,8 @@ const Home = () => {
                         <div className='form1' item xs={12} sm={6} md={3}>
                             <div className='appBarSearch' position='static' >
                                 <label > Search posts: <input name='search' value={search} onKeyPress={handleKeyPress} onChange={(e) => setSearch(e.target.value)}/></label>
-                                <label > Search tags: <input style={{margin: '10px 0'}} value={tags} onAdd={handleAdd} onDelete={handleDelete} /></label>
+                                <label > Search tags: <ChipInput style={{margin: '25px 0 20px -80px'}} variant='outlined' value={tags} onAdd={handleAdd} onDelete={handleDelete} /></label>
+                                <button onClick={searchPost} className='searchButton'>Search</button>
                             </div>
                             <Form currentId={currentId} setCurrentId={setCurrentId}/>
                             <div className='pagination' ><Pagination/></div>

@@ -16,3 +16,5 @@ export const likePost = (id) => axios.patch(`${url}/${id}/likePost`);
 
 export const signIn = (formData) => axios.post('/user/signin', formData);
 export const signUp = (formData) => axios.post('/user/signup', formData);
+
+export const fetchPostsBySearch = (searchQuery) => axios.get(`${url}/search?searchQuery=${searchQuery.search || 'none'}&tags=${searchQuery.tags}`);

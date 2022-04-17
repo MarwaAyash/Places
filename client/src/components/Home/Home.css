@@ -72,3 +72,11 @@
     flex-direction: column-reverse;
     /* } */
 }
+
+.searchButton {
+    color: white;
+    background-color: blue;
+    width: 70%;
+    height: 30px;
+    
+}
