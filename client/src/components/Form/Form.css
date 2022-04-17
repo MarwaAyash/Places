@@ -6,9 +6,11 @@
     
 }
 .paper {
-    padding: 10px;
+    padding: 5px;
     background: white ;
-    border: 1px dotted;
+    /* border: 1px dotted; */
+    box-shadow: 1px 0px 24px 0px rgba(100,100,100,0.75);
+    width: 25%
     
 }
 .paper1 {

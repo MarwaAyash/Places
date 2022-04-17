@@ -7,14 +7,13 @@
     width: 330px;
     height: 530px;
     grid-template-columns: repeat(2, 1fr);
-    
-    
+
     grid-gap: 20px;
     /* margin-right: 20px; */
 
 }
 
-.container {
+.container-posts {
     display: flex ;
     flex-wrap:  wrap ;
     justify-content:stretch ;

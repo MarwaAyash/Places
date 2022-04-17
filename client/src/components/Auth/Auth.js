@@ -6,7 +6,7 @@ import Input from './Input';
 import Icon from './icon';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { signin, signup } from '../../actions/auth'
+import { signin, signup } from '../../actions/auth';
 
 const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' };
 
@@ -58,24 +58,24 @@ const Auth = () => {
 
     return (
         <div className='container' >
-            <div className="paper" elevation={3}>
-                <label className="avatar">
+            <div className="paper2" elevation={3}>
+                <div className="avatar">
                     <LockOutlinedIcon />
-                </label>
+                </div>
                 <h3>{isSignup ? 'Sign up' : 'Sign In'}</h3>
                 <form className="form" onSubmit={handleSubmit}>
-                <nav className='nav-container' container spacing={2}>
+                <div className='signup-container' container spacing={2}>
                     { isSignup && (
                     <>
-                    <Input name="firstName" label="First Name" handleChange={handleChange} autoFocus xs={6} />
-                    <Input name="lastName" label="Last Name" handleChange={handleChange} xs={6} />
+                    <label className='signInUp' >First Name: <Input name="firstName" placeholder='First Name' label="First Name" handleChange={handleChange} autoFocus xs={6} /></label>
+                    <label className='signInUp'>Last Name: <Input name="lastName" placeholder='Last Name'  label="Last Name" handleChange={handleChange} xs={6} /></label>
                     </>
                     )}
-                    <Input name="email" label="Email Address" handleChange={handleChange} type="email" />
-                    <Input name="password" label="Password" handleChange={handleChange} type={showPassword ? 'text' : 'password'} handleShowPassword={handleShowPassword} />
+                    <label className='signInUp'>Email Address: <Input name="email"  label="Email Address" handleChange={handleChange} type="email" /></label>
+                    <label className='signInUp'>Password: <Input name="password"   label="Password" handleChange={handleChange} type={showPassword ? 'text' : 'password'} handleShowPassword={handleShowPassword} /></label>
                         {/* confirm password field will be shown only when we are in the sign up form */}
-                    { isSignup && <Input name="confirmPassword" label="Repeat Password" handleChange={handleChange} type="password" /> }
-                </nav>
+                    { isSignup && <label className='signInUp'>Confirm Password: <Input name="confirmPassword" label="Repeat Password" handleChange={handleChange} type="password" /></label> }
+                </div>
                     
                     <button  type="submit" fullWidth variant="contained"  className="submit">
                         { isSignup ? 'Sign Up' : 'Sign In' }
@@ -95,14 +95,14 @@ const Auth = () => {
                         onFailure={googleError}
                         cookiePolicy="single_host_origin"
                     />
-                    <nav container justify="flex-end">
+                    <div container justify="flex-end">
                         <div item>
                             {/* switch from sign up to sign in */}
                             <button onClick={switchMode} className='btn'>
                                 { isSignup ? 'Already have an account? Sign in' : "Don't have an account? Sign Up" }
                             </button>
                         </div>
-                    </nav>
+                    </div>
                 </form>
             </div>
         </div>
