@@ -39,7 +39,7 @@ const Post = ({post, setCurrentId}) => {
                 <button className='buttonEdit' style={{ color: 'white' }} size="small" onClick={() => setCurrentId(post._id)}><Icon icon={kebabHorizontal} size={20}/></button>
             </div>
             )}
-            <h2 className="title" gutterBottom variant="h5" component="h2">{post.title}</h2>
+            <h2 className="title" gutterbottom variant="h5" component="h2">{post.title}</h2>
             <div className="details">
                 <p className='tag' variant="body2" size='30' component="h2">{post.tags.map((tag) => `#${tag} `)}</p>
             </div>

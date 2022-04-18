@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-//import useStyles from './styles';
 import decode from 'jwt-decode';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -9,9 +8,7 @@ import './Navbar.css';
 import styled from 'styled-components';
 
 const Navbar = () => {
-    //const classes = useStyles();
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
-    //console.log(user);
     const dispatch = useDispatch();
 
     const navigate = useNavigate();
@@ -69,6 +66,10 @@ color: blue;
 font-weight: bold;
 margin-top: 10px;
 margin-left: 10px;
+box-shadow: 1px 0px 24px 0px rgba(100,100,100,0.75);
+-webkit-box-shadow: 1px 0px 24px 0px rgba(100,100,100,0.75);
+-moz-box-shadow: 1px 0px 24px 0px rgba(100,100,100,0.75);
+border-radius: 15px;
 
 `
 export default Navbar

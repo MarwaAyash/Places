@@ -5,7 +5,6 @@ import moment from 'moment';
 
 const Forecast = ({data}) => {
     const currentWeather = data.forecast.forecastday[0].hour;
-    console.log("currentWeather", currentWeather);
     moment().format('MMMM Do YYYY, h:mm:ss a');
 
     return (

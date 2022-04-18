@@ -29,7 +29,7 @@ const App = () => {
                 
                 
             </Container>
-        {/* <Weather exact to="/weather" /> */}
+        
         </BrowserRouter>
     )
 }

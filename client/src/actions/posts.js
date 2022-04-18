@@ -1,14 +1,17 @@
-import {CREATE, UPDATE, DELETE, FETCH_ALL, FETCH_BY_SEARCH} from '../constants/actionTypes';
+import {CREATE, UPDATE, DELETE, FETCH_ALL, FETCH_BY_SEARCH, START_LOADING, END_LOADING} from '../constants/actionTypes';
 import * as api from '../api';
 //create actions creators
 //to fetch all the posts so we use redux-thunk
-export const getPosts = () => async(dispatch) => {
+export const getPosts = (page) => async(dispatch) => {
     //try to fetch all the data from api 
     try{
+        dispatch({type: START_LOADING});
         //get the response which its have the data object from the backend
-        const {data} = await api.fetchPosts();
+        const {data} = await api.fetchPosts(page);
+
          //declare action as an object
         dispatch({type: FETCH_ALL, payload:data});
+        dispatch({type: END_LOADING});
     }catch(error){
         console.log(error);
     }
@@ -18,10 +21,11 @@ export const getPosts = () => async(dispatch) => {
 export const getPostsBySearch = (searchQuery) => async(dispatch) => {
     
     try{
+        dispatch({type: START_LOADING});
         //get the response which its have the data object from the backend
         const { data: { data } } = await api.fetchPostsBySearch(searchQuery);
         dispatch({type: FETCH_BY_SEARCH, payload:data})
-        console.log(data);
+        dispatch({type: END_LOADING});
     }catch(error){
         console.log(error);
     }
@@ -31,6 +35,7 @@ export const getPostsBySearch = (searchQuery) => async(dispatch) => {
 export const createPost = (post) => async(dispatch) => {
     //try to fetch all the data from api 
     try{
+        dispatch({type: START_LOADING});
         //get the data which distruct the data from the response
         const {data} = await api.createPost(post);
          //declare action as an object

@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import Posts from '../Posts/Posts';
 import Form from '../Form/Form';
 import { useDispatch } from 'react-redux';
-import { getPosts, getPostsBySearch } from '../../actions/posts';
+import { getPostsBySearch } from '../../actions/posts';
 import styled from 'styled-components';
 import Pagination from '../Pagination';
 import { useNavigate, useLocation } from 'react-router-dom';
@@ -25,11 +25,7 @@ const Home = () => {
     const [search, setSearch] = useState('');
     const [tags, setTags] = useState([]);
 
-    useEffect(() => {
-        
-        dispatch(getPosts());
-    },[currentId, dispatch]);
-
+    
     const handleKeyPress = (e) => {
         // enter key has a code 13
         if(e.keyCode === 13){
@@ -42,7 +38,7 @@ const Home = () => {
 
 
     const searchPost = () => {
-        if(search.trim() || tags){
+        if(search.trim().length || tags.length){
             //fetch search post
             dispatch(getPostsBySearch({search, tags: tags.join(',')}));
             navigate(`/posts/search?searchQuery=${search || 'none'}&tags=${tags.join(',')}`);
@@ -57,16 +53,20 @@ const Home = () => {
 
     return (
         <div className='main' >
-                {/* <main> */}
+                
                     <div  justify='space-between' alignItems='stretch' className='grid-container' spacing={3}>
                         <div className='form1' item xs={12} sm={6} md={3}>
                             <div className='appBarSearch' position='static' >
                                 <label > Search posts: <input name='search' value={search} onKeyPress={handleKeyPress} onChange={(e) => setSearch(e.target.value)}/></label>
-                                <label > Search tags: <ChipInput style={{margin: '25px 0 20px -80px'}} variant='outlined' value={tags} onAdd={handleAdd} onDelete={handleDelete} /></label>
+                                <label > Search tags: 
+                                    <div><ChipInput style={{margin: '25px 0 20px 0'}} variant='outlined' value={tags} onAdd={handleAdd} onDelete={handleDelete} /></div></label>
                                 <button onClick={searchPost} className='searchButton'>Search</button>
                             </div>
                             <Form currentId={currentId} setCurrentId={setCurrentId}/>
-                            <div className='pagination' ><Pagination/></div>
+                            {(!searchQuery && !tags.length) && (
+                                <div className='pagination' ><Pagination page={page} /></div>
+                            )}
+                            
                             <br/>
 
                         </div>
@@ -74,13 +74,8 @@ const Home = () => {
                         <Wrapper item xs={12} sm={6} >
                             <Posts setCurrentId={setCurrentId}/>
                         </Wrapper>
-                        
-                        {/* <Grid item xs={30} sm={3}> 
-                            <Weather/>
-                        </Grid> */}
             
                     </div>
-                {/* </main> */}
             </div>
             
             

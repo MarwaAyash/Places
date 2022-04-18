@@ -7,7 +7,7 @@ import './Form.css';
 // we need the id of the current post to update it
 const Form = ({currentId, setCurrentId}) => {
 
-    const post = useSelector((state) => currentId ? state.posts.find((postId) =>  postId._id === currentId) : null);
+    const post = useSelector((state) => currentId ? state.posts.posts.find((postId) =>  postId._id === currentId) : null);
     // state that will stored the data in 
     const [postData, setPostData] = useState({
         title: '',
@@ -15,7 +15,7 @@ const Form = ({currentId, setCurrentId}) => {
         tags:'',
         selectedFile:''
     });
-    //const classes = useStyles();
+
 const dispatch = useDispatch();
 const user = JSON.parse(localStorage.getItem('profile'));
 
