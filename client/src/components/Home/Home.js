@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import Posts from '../Posts/Posts';
 import Form from '../Form/Form';
 import { useDispatch } from 'react-redux';
-import { getPostsBySearch } from '../../actions/posts';
+import { getPosts, getPostsBySearch } from '../../actions/posts';
 import styled from 'styled-components';
 import Pagination from '../Pagination';
 import { useNavigate, useLocation } from 'react-router-dom';
@@ -24,6 +24,10 @@ const Home = () => {
     const dispatch = useDispatch();
     const [search, setSearch] = useState('');
     const [tags, setTags] = useState([]);
+    useEffect(() => {
+        // if(page)
+            dispatch(getPosts());
+    },[currentId, dispatch]);
 
 
     const handleKeyPress = (e) => {
@@ -63,9 +67,9 @@ const Home = () => {
                                 <button onClick={searchPost} className='searchButton'>Search</button>
                             </div>
                             <Form currentId={currentId} setCurrentId={setCurrentId}/>
-                            {(!searchQuery && !tags.length) && (
-                                <div className='pagination' ><Pagination page={page} /></div>
-                            )}
+                            {/* {(!searchQuery && !tags.length) && (
+                                <div className='pagination' ><Pagination page={page} /></div> 
+                                )}  */}
                             
                             <br/>
 
