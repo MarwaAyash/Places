@@ -25,7 +25,7 @@ const Home = () => {
     const [search, setSearch] = useState('');
     const [tags, setTags] = useState([]);
 
-    
+
     const handleKeyPress = (e) => {
         // enter key has a code 13
         if(e.keyCode === 13){

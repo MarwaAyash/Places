@@ -6,7 +6,7 @@ import './Form.css';
 
 // we need the id of the current post to update it
 const Form = ({currentId, setCurrentId}) => {
-
+ 
     const post = useSelector((state) => currentId ? state.posts.posts.find((postId) =>  postId._id === currentId) : null);
     // state that will stored the data in 
     const [postData, setPostData] = useState({
@@ -39,6 +39,7 @@ useEffect(() => {
     };
     const clear = () => {
         setCurrentId(0);
+        
         setPostData({ title: '', message:'', tags:'', selectedFile:'' });
     }
 

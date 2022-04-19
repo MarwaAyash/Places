@@ -5,8 +5,9 @@ import Icon from "react-icons-kit";
 import {spinner4} from 'react-icons-kit/icomoon';
 import './Posts.css';
 
-const Posts = ({setCurrentId}) => {
+const Posts = ({ setCurrentId}) => {
     const {posts, isLoading} = useSelector((state) => state.posts);
+
     if(!posts?.length && !isLoading) return 'No posts';
     return (
         isLoading ? <p>Loading... <Icon icon={spinner4} size={40}/></p> :(
