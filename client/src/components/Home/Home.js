@@ -4,7 +4,6 @@ import Form from '../Form/Form';
 import { useDispatch } from 'react-redux';
 import { getPosts, getPostsBySearch } from '../../actions/posts';
 import styled from 'styled-components';
-import Pagination from '../Pagination';
 import { useNavigate, useLocation } from 'react-router-dom';
 import ChipInput from 'material-ui-chip-input'
 import './Home.css'
@@ -17,15 +16,12 @@ const Home = () => {
     const [currentId, setCurrentId] = useState(0);
     const query= useQuery();
     const navigate = useNavigate();
-    // read url and see if there is page parameter in it 
-    // if no pages, we must be in the first 1
-    const page = query.get('page') || 1;
     const searchQuery = query.get('searchQuery');
     const dispatch = useDispatch();
     const [search, setSearch] = useState('');
     const [tags, setTags] = useState([]);
+
     useEffect(() => {
-        // if(page)
             dispatch(getPosts());
     },[currentId, dispatch]);
 
@@ -67,10 +63,6 @@ const Home = () => {
                                 <button onClick={searchPost} className='searchButton'>Search</button>
                             </div>
                             <Form currentId={currentId} setCurrentId={setCurrentId}/>
-                            {/* {(!searchQuery && !tags.length) && (
-                                <div className='pagination' ><Pagination page={page} /></div> 
-                                )}  */}
-                            
                             <br/>
 
                         </div>

@@ -24,16 +24,9 @@
     justify-content:stretch ;
     align-items: stretch;
 }
-.pagination {
-    border-radius: 4;
-    margin-top: 1rem;
-    padding: 16px;
-}
 
 .gridContainer {
-    /* [theme.breakpoints.down('xs')]: { */
     flex-direction: column-reverse;
-    /* } */
 }
 
 .searchButton {
