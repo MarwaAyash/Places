@@ -1,0 +1,39 @@
+.media-detail {
+    
+    height: 200px ;
+    background-color: rgba(0, 0, 0, 0.2);
+    background-blend-mode: darken;
+    border-radius: 10px;
+
+}
+.card-detail{
+    display: flex;
+    width: 90%;  
+    flex-wrap: wrap;
+    flex-direction: column;
+    background-color: tomato;
+
+}
+.section {
+    border-radius: 20px;
+    margin: 10px;
+    flex: 1;
+}
+.imageSection {
+    /* margin-left: 20px; */
+    width: 90%;
+    border-radius: 10px;
+
+    margin-left: 0;
+    
+}
+.recommendedPosts {
+    display: flex;
+    justify-content: left;
+    flex-direction: column;
+    
+    }
+
+.messageDetail{
+    width: 400px;
+}

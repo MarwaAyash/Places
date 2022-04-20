@@ -91,3 +91,11 @@
     background: none;
     color: red;
 }
+
+.cardAction {
+    display: block;
+    border: none;
+    background-color: white;
+    text-align: left;
+    cursor: pointer;
+}
