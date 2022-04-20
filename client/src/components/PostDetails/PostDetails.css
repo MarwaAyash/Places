@@ -37,3 +37,8 @@
 .messageDetail{
     width: 400px;
 }
+
+.suggestion{
+    color: blue;
+    font-size: large;
+}

@@ -50,7 +50,7 @@ const Post = () => {
         <br/>
         {!!recommendedPosts.length && (
             <div className='section'>
-            <b gutterBottom variant="h5">You might also like:</b>
+            <b className='suggestion'>You might also like:</b>
             
             <div className='recommendedPosts'>
                 {recommendedPosts.map(({ title, name, message, likes, selectedFile, _id }) => (
