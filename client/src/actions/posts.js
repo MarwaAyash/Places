@@ -38,6 +38,7 @@ export const createPost = (post) => async(dispatch) => {
         dispatch({type: START_LOADING});
         //get the data which distruct the data from the response
         const {data} = await api.createPost(post);
+        console.log(data);
          //declare action as an object
         dispatch({type: CREATE, payload: data});
     }catch(error){
