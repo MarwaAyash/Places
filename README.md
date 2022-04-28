@@ -19,7 +19,7 @@ This app is called "Places" and it is a social media app that  allows users to c
 -They can check the weather for the next 3 days.
 
 
-The project has been built on React,Redux, Node.js, Express, MongoDB and styled with styled-components and css.
+The project has been built on React, Redux, Node.js, Express, MongoDB and styled with styled-components and css.
 
 
 Setup:
