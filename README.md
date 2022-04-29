@@ -2,7 +2,7 @@
 
 Description:
 
-This app is called "Places" and it is a social media app that  allows users to create a posts about places they visited. The user must be sign in to create a post.
+This app is called "Places" and it is a social media app that  allows users to create a post about places they visited. The user must be sign in to create a post.
 
 -Before sign in all the posts are disabled( users can't like the posts).
 
